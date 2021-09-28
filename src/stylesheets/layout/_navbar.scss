@@ -1,0 +1,17 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the Navbar of the site/application.
+// -----------------------------------------------------------------------------
+
+.navbar{
+    height: 72px;
+    position: sticky;
+    top: 0px;
+    z-index: 90;
+    width: 100%;
+    box-shadow: rgb(4 17 29 / 25%) 0px 0px 8px 0px;
+
+    h1{
+        margin:0;
+        
+    }
+}

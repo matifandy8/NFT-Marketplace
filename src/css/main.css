@@ -1,0 +1,18 @@
+/* Error: Invalid Sass identifier "$text-color"
+ *   ,
+ * 4 | @use "$text-color";
+ *   | ^^^^^^^^^^^^^^^^^^
+ *   '
+ *   src\stylesheets\layout\_navbar.scss 4:1  @use
+ *   src\stylesheets\main.scss 19:1           root stylesheet */
+
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: 'Error: Invalid Sass identifier "$text-color"\a   \2577 \a 4 \2502  @use "$text-color";\a   \2502  ^^^^^^^^^^^^^^^^^^\a   \2575 \a   src\\stylesheets\\layout\\_navbar.scss 4:1  @use\a   src\\stylesheets\\main.scss 19:1           root stylesheet';
+}
