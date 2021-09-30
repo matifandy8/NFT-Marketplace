@@ -21,6 +21,9 @@
 
 // 5. Components
 @use 'components/button';
+@use 'components/CardProduct';
+@use 'components/ListProducts';
+
 
 // 6. Page-specific styles
 @use 'pages/home';
