@@ -1,24 +1,20 @@
 import { useEffect, useState } from "react";
-import { supabase } from "../../libs/client";
+import { useDispatch, useSelector } from "react-redux";
+import { getProducts, productsSelector } from "../../features/productSlice";
 import { ProductItem } from "../../types";
 import CardProduct from "./CardProduct";
 
 
 const ListProducts = () => {
-  const [allProducts, setAllProducts] = useState<ProductItem[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const dispatch = useDispatch()
+  const { products, loading, errors } = useSelector(productsSelector)
+
+  console.log(products, loading, errors)
 
   useEffect(() => {
-    fetchProducts().catch(console.error);
-  }, []);
-
-  const fetchProducts = async () => {
-    let { data: products, error }:any = await supabase.from("products").select("*");
-    if (error) console.log("error", error);
-    else setAllProducts(products);
-  };
+    dispatch(getProducts())
+  }, [dispatch])
 
   return (
     <div className="ListProducts">
@@ -35,10 +31,10 @@ const ListProducts = () => {
           <h2>
             Loading...
           </h2>
-        ) : error ? (
+        ) : errors ? (
           <h2>Error</h2>
         ) : (
-          allProducts.filter((product:ProductItem) => {
+          products.filter((product:ProductItem) => {
               if (searchTerm === "") {
                 return product;
               } else if (
