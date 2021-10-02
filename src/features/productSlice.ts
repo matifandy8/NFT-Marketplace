@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { supabase } from "../libs/client"
-import { AppThunk } from "../main"
+import { AppThunk } from "../store"
 import { ProductItem } from "../types"
 
 

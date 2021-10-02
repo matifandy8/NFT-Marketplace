@@ -45,11 +45,11 @@ const ListProducts = () => {
             })
             .map((product:ProductItem) => (
               <CardProduct
-                key={product.id}
+                key={product._id}
                 name={product.name}
                 price={product.price}
                 image={product.image}
-                id={product.id} 
+                _id={product._id} 
                 description={""}            
                   />
             ))
