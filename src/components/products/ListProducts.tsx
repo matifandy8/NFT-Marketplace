@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts, productsSelector } from "../../features/productSlice";
 import { ProductItem } from "../../types";
+import Loading from "../loading";
 import CardProduct from "./CardProduct";
 
 
@@ -27,10 +28,11 @@ const ListProducts = () => {
         }}
       />
       <div className="products">
+        
         {loading ? (
-          <h2>
-            Loading...
-          </h2>
+             <div className="loading">
+        <Loading/>
+        </div>
         ) : errors ? (
           <h2>Error</h2>
         ) : (

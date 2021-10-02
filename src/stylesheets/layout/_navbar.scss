@@ -3,6 +3,8 @@
 // -----------------------------------------------------------------------------
 
 .navbar{
+    display:flex;
+    justify-content:space-between;
     background-color:white;
     height: 72px;
     position: sticky;
@@ -11,8 +13,11 @@
     width: 100%;
     box-shadow: rgb(4 17 29 / 25%) 0px 0px 8px 0px;
 
-    h1{
+     h1{
         margin:0;
-
+        font-size: 20px;
+       line-height: 1.5;
+       font-weight: 500;
+        padding: 10px;
     }
 }

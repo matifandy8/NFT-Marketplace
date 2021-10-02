@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { ProductItem } from "../../types";
 
-const DetailsCard = ({ image, name, price, _id }: ProductItem) => {
+const DetailsCard = ({ image, name, price, _id,description }: ProductItem) => {
   return (
     <div className="DetailsCard">
       <div className="title">
@@ -10,7 +10,7 @@ const DetailsCard = ({ image, name, price, _id }: ProductItem) => {
       </div>
       <div className="info">
         <p>Price ${price}</p>
-        <p>Description</p>
+        <p>Description {description}</p>
         <button className="btn__buy">Buy</button>
       </div>
     </div>

@@ -20,6 +20,7 @@
 @use 'layout/footer';
 
 // 5. Components
+@use 'components/loading';
 @use 'components/button';
 @use 'components/CardProduct';
 @use 'components/ListProducts';

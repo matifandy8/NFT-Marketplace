@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import Loading from "../../components/loading";
 import CardProduct from "../../components/products/CardProduct";
 import { store } from "../../store";
 import { ProductItem } from "../../types";
@@ -25,9 +26,7 @@ const ProductDetails = () => {
   return (
     <div className="productDetails">
      {loading ? (
-          <h2>
-            Loading...
-          </h2>
+          <Loading/>
         ) : errors ? (
           <h2>Error</h2>
         ) : (
@@ -38,7 +37,7 @@ const ProductDetails = () => {
                 price={product.price}
                 image={product.image}
                 _id={product._id} 
-                description={""}            
+                description={product.description}            
                   />
             ))
         )}

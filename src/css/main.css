@@ -424,6 +424,8 @@ a {
 }
 
 .navbar {
+  display: flex;
+  justify-content: space-between;
   background-color: white;
   height: 72px;
   position: sticky;
@@ -434,16 +436,82 @@ a {
 }
 .navbar h1 {
   margin: 0;
+  font-size: 20px;
+  line-height: 1.5;
+  font-weight: 500;
+  padding: 10px;
 }
 
 .footer {
   color: white;
+  background-color: #1868b7;
+  padding-top: 10px;
+  padding-bottom: 0px;
   position: fixed;
   bottom: 0;
   width: 100%;
-  background-color: #1868b7;
 }
 
+#loader {
+  position: absolute;
+  left: 40%;
+  top: 50%;
+  z-index: 1;
+  width: 120px;
+  height: 120px;
+  margin: -76px 0 0 -76px;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+/* Add animation to "page content" */
+.animate-bottom {
+  position: relative;
+  -webkit-animation-name: animatebottom;
+  -webkit-animation-duration: 1s;
+  animation-name: animatebottom;
+  animation-duration: 1s;
+}
+
+@-webkit-keyframes animatebottom {
+  from {
+    bottom: -100px;
+    opacity: 0;
+  }
+  to {
+    bottom: 0px;
+    opacity: 1;
+  }
+}
+@keyframes animatebottom {
+  from {
+    bottom: -100px;
+    opacity: 0;
+  }
+  to {
+    bottom: 0;
+    opacity: 1;
+  }
+}
 .CardProduct {
   margin: 10px;
   background-color: white;
@@ -458,20 +526,38 @@ a {
   max-width: 100%;
   max-height: 100%;
 }
+.CardProduct h3 {
+  line-height: 1.5;
+  font-weight: 400;
+}
+.CardProduct p {
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 300;
+}
 
 .info__button {
   text-decoration: none;
   color: black;
 }
 
-.products {
-  display: grid;
-  gap: 10rem;
-  grid-auto-rows: 22rem;
-  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+.ListProducts {
+  left: 30%;
 }
-
-.input {
+.ListProducts .products {
+  display: grid;
+  gap: 5rem;
+  grid-auto-rows: 22rem;
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+}
+.ListProducts .loading {
+  position: absolute;
+  left: 50%;
+  width: 100px;
+  top: 50%;
+  height: 50px;
+}
+.ListProducts .input {
   margin: 10px;
   width: 100%;
   height: 50px;
@@ -479,7 +565,7 @@ a {
   border-radius: 5px;
   padding-left: 20px;
 }
-.input:focus {
+.ListProducts .input:focus {
   outline: none;
   box-shadow: rgba(4, 17, 29, 0.25) 0px 0px 8px 0px;
 }
@@ -494,10 +580,11 @@ a {
 }
 
 .productDetails {
+  height: 350px;
   margin: auto;
   max-width: 100%;
   position: absolute;
-  left: 10%;
+  left: 20%;
   right: 10%;
 }
 .productDetails .DetailsCard {
@@ -544,6 +631,10 @@ a {
   background-color: #2081e2;
   border: 1px solid #2081e2;
   color: white;
+}
+.productDetails .DetailsCard .btn__buy:hover {
+  cursor: pointer;
+  background-color: #15599e;
 }
 
 @media only screen and (min-width: 768px) {

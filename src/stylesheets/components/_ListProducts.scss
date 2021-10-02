@@ -1,8 +1,18 @@
+
+.ListProducts{ 
+    left:30%;
 .products{
 display:grid;
-gap:10rem;
+gap:5rem;
 grid-auto-rows:22rem;
-grid-template-columns:repeat(auto-fill, minmax(15rem,1fr));
+grid-template-columns:repeat(auto-fill, minmax(20rem,1fr));
+}
+.loading{
+        position: absolute;
+    left: 50%;
+    width: 100px;
+    top: 50%;
+    height: 50px;
 }
 
 .input{
@@ -17,6 +27,9 @@ grid-template-columns:repeat(auto-fill, minmax(15rem,1fr));
         box-shadow: rgb(4 17 29 / 25%) 0px 0px 8px 0px;
     }
 }
+}
+
+
 
 @media only screen and (min-width: 768px) {
     .input{

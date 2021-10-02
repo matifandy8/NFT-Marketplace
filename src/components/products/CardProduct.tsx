@@ -7,8 +7,8 @@ const CardProduct = ({ image, name, price, _id }:ProductItem) => {
         <div className="CardProduct">
             <img src={image}/>
         <div className="info">
-            <p>{name}</p>
-            <p>Price${price}</p>
+            <h3>{name}</h3>
+            <p>Price  ${price}</p>
         </div>
         </div>
        </Link> 
