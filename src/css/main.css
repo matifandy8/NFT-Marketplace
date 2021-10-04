@@ -434,12 +434,55 @@ a {
   width: 100%;
   box-shadow: rgba(4, 17, 29, 0.25) 0px 0px 8px 0px;
 }
+.navbar .logo {
+  margin: 10px;
+}
 .navbar h1 {
   margin: 0;
   font-size: 20px;
   line-height: 1.5;
   font-weight: 500;
   padding: 10px;
+}
+
+.noUser {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 25px;
+}
+
+.login_link, .register__link {
+  transition: color 1s ease 0s, background-color 1s ease 0s;
+  align-items: center;
+  color: rgba(4, 17, 29, 0.75);
+  display: flex;
+  height: 100%;
+  padding: 0px 20px;
+  position: relative;
+  width: 100%;
+}
+.login_link:hover, .register__link:hover {
+  color: rgba(0, 0, 0, 0.986);
+}
+
+.existUser {
+  display: flex;
+  margin-top: 10px;
+  margin-right: 20px;
+}
+.existUser .cart__image {
+  display: flex;
+  margin-top: 5px;
+  margin-right: 20px;
+}
+.existUser .cart__image span {
+  margin-top: 10px;
+  margin-right: 20px;
+}
+.existUser .cart__image img {
+  width: 30px;
+  margin-right: 10px;
 }
 
 .footer {
@@ -512,6 +555,22 @@ a {
     opacity: 1;
   }
 }
+.button__blue {
+  width: 100%;
+  border-radius: 5px;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 12px 20px;
+  background-color: #2081e2;
+  border: 1px solid #2081e2;
+  color: white;
+}
+.button__blue:hover {
+  cursor: pointer;
+  background-color: #15599e;
+}
+
 .CardProduct {
   margin: 10px;
   background-color: white;
@@ -580,7 +639,7 @@ a {
 }
 
 .productDetails {
-  height: 350px;
+  height: 100%;
   margin: auto;
   max-width: 100%;
   position: absolute;
@@ -621,24 +680,39 @@ a {
   border: 1px solid #e5e8eb;
   margin: 10px;
 }
-.productDetails .DetailsCard .btn__buy {
-  width: 100%;
-  border-radius: 5px;
-  justify-content: center;
-  font-size: 16px;
-  font-weight: 600;
-  padding: 12px 20px;
-  background-color: #2081e2;
-  border: 1px solid #2081e2;
-  color: white;
-}
-.productDetails .DetailsCard .btn__buy:hover {
-  cursor: pointer;
-  background-color: #15599e;
-}
 
 @media only screen and (min-width: 768px) {
   .btn__buy {
     width: 50%;
   }
+}
+.form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.form .form__auth {
+  height: 100%;
+  width: 25rem;
+  margin: 40px;
+  border-radius: 10px;
+  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.03), 0 6.7px 5.3px rgba(0, 0, 0, 0.05), 0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.07), 0 41.8px 33.4px rgba(0, 0, 0, 0.09), 0 100px 80px rgba(0, 0, 0, 0.12);
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.form .form__auth form {
+  margin-top: 20px;
+  padding: 30px 60px;
+}
+.form .form__auth form input {
+  flex: 1 1;
+  padding: 13px;
+  border: 1px solid #d6d8e6;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: all 0.2s ease-out;
+  margin-bottom: 25px;
+  border-radius: 8px;
 }

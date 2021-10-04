@@ -11,13 +11,13 @@ const Navbar = () => {
     const authButton = () => {
     if (!user) {
       return (
-        <div>
+        <div className="noUser">
           <Link to="/login"
             className="login_link"
           >
             Log In
           </Link>
-          <Link to="/regiter" className="register__link">
+          <Link to="/register" className="register__link">
             Register
           </Link>
         </div>
@@ -25,8 +25,13 @@ const Navbar = () => {
     } else {
       return (
         <div className="existUser">
-         
-            <button className="logout" onClick={handleLogoutClick}>
+          <Link to="/cart" className="cart__link">
+          <div className="cart__image">
+            <img src="https://cdn-icons-png.flaticon.com/512/833/833314.png"/>
+            <span>(0)</span>
+          </div>
+          </Link>
+            <button className="button__blue" onClick={handleLogoutClick}>
               Log out
             </button>
           </div>

@@ -24,22 +24,19 @@ const Login = () => {
     history.push("/");
   }
   return (
-    <>
+    <div className="form">
+    <div className="form__auth">
       <form onSubmit={handleSubmit}>
-        <label htmlFor="input-email">Email</label>
-        <input id="input-email" type="email" ref={emailRef} />
-
-        <label htmlFor="input-password">Password</label>
-        <input id="input-password" type="password" ref={passwordRef} />
-
+        <input id="input-email" type="email" placeholder="Write your Email" ref={emailRef} />
+        <input id="input-password" type="password" placeholder="Write your Password" ref={passwordRef} />
         <br />
-
-        <button type="submit">Login</button>
+        <button type="submit" className="button__blue">Login</button>
       </form>
       <p>
         Don't have an account? <Link to="/register">Sign Up</Link>
       </p>
-    </>
+    </div>
+    </div>
   );
 };
 

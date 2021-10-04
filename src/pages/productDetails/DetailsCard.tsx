@@ -11,7 +11,9 @@ const DetailsCard = ({ image, name, price, _id,description }: ProductItem) => {
       <div className="info">
         <p>Price ${price}</p>
         <p>Description {description}</p>
-        <button className="btn__buy">Buy</button>
+        {/* deberia agregar al carrito el
+         producto si es que esta loguedo el user*/}
+        <button className="button__blue">Buy</button>
       </div>
     </div>
   );

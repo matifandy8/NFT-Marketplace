@@ -23,22 +23,19 @@ const Register = () => {
     history.push("/");
   }
   return (
-    <>
+        <div className="form">
+    <div className="form__auth">
       <form onSubmit={handleSubmit}>
-        <label htmlFor="input-email">Email</label>
-        <input id="input-email" type="email" ref={emailRef} />
-
-        <label htmlFor="input-password">Password</label>
-        <input id="input-password" type="password" ref={passwordRef} />
-
+        <input id="input-email" type="email" placeholder="Write your Email" ref={emailRef} />
+        <input id="input-password" type="password" placeholder="Write your Password" ref={passwordRef} />
         <br />
-
-        <button type="submit">Sign up</button>
+        <button type="submit" className="button__blue">Sign up</button>
       </form>
       <p>
         Already have an account? <Link to="/login">Log In</Link>
       </p>
-    </>
+    </div>
+    </div>
   );
 };
 

@@ -12,7 +12,9 @@
     z-index: 90;
     width: 100%;
     box-shadow: rgb(4 17 29 / 25%) 0px 0px 8px 0px;
-
+    .logo{
+        margin: 10px;
+    }
      h1{
         margin:0;
         font-size: 20px;
@@ -21,3 +23,44 @@
         padding: 10px;
     }
 }
+.noUser{
+   display:flex;
+   justify-content: center;
+   align-items: center;
+   margin-top: 25px;
+}
+
+.login_link,.register__link{
+    transition: color 1s ease 0s, background-color 1s ease 0s;
+    align-items: center;
+    color: rgba(4, 17, 29, 0.75);
+    display: flex;
+    height: 100%;
+    padding: 0px 20px;
+    position: relative;
+    width: 100%;
+    &:hover{
+            color: rgba(0, 0, 0, 0.986);
+    }
+}
+
+.existUser{
+    display: flex;
+    margin-top: 10px;
+    margin-right: 20px;
+    .cart__image{
+        display: flex;
+       margin-top: 5px;
+    margin-right: 20px;
+    span{
+        margin-top: 10px;
+    margin-right: 20px;
+    }
+    img{
+        width: 30px;
+        margin-right: 10px;
+    }
+    }
+    
+}
+
