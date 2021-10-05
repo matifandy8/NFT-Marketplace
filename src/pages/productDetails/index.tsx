@@ -37,7 +37,8 @@ const ProductDetails = () => {
                 price={product.price}
                 image={product.image}
                 _id={product._id} 
-                description={product.description}            
+                description={product.description}
+                addtocart={product}            
                   />
             ))
         )}

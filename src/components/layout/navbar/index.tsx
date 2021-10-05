@@ -1,7 +1,10 @@
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../../contexts/auth";
 
 const Navbar = () => {
+    const { cartTotalQuantity } = useSelector((state) => state.cart);
+
   const { user }:any = useAuth()
    const handleLogoutClick = () => {
     alert("Success Logout")
@@ -28,7 +31,7 @@ const Navbar = () => {
           <Link to="/cart" className="cart__link">
           <div className="cart__image">
             <img src="https://cdn-icons-png.flaticon.com/512/833/833314.png"/>
-            <span>(0)</span>
+            <span>{ cartTotalQuantity } </span>
           </div>
           </Link>
             <button className="button__blue" onClick={handleLogoutClick}>
