@@ -8,7 +8,7 @@ const CardProduct = ({ image, name, price, _id }:ProductItem) => {
             <img src={image}/>
         <div className="info">
             <h3>{name}</h3>
-            <p>Price  ${price}</p>
+            <p>Price  ${price.toLocaleString()}</p>
         </div>
         </div>
        </Link> 

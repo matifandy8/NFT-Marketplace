@@ -52,7 +52,7 @@ const ListProducts = () => {
                 price={product.price}
                 image={product.image}
                 _id={product._id} 
-                description={""}            
+                description={""}  
                   />
             ))
         )}

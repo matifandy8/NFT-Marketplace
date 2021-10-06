@@ -33,12 +33,7 @@ const ProductDetails = () => {
           sem.map((product:ProductItem) => (
               <DetailsCard
                 key={product._id}
-                name={product.name}
-                price={product.price}
-                image={product.image}
-                _id={product._id} 
-                description={product.description}
-                addtocart={product}            
+                product={product}
                   />
             ))
         )}

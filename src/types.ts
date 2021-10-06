@@ -4,5 +4,4 @@ export interface ProductItem {
   description: string
   price: number
   image: string
-  addtocart: ProductItem
 }

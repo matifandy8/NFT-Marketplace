@@ -4,20 +4,20 @@ import { Link } from "react-router-dom";
 import { addToCart, clearCart, decreaseCart, getTotals, removeFromCart } from "../../features/cartSlice";
 
 const Cart = () => {
-     const cart = useSelector((state) => state.cart);
+     const cart = useSelector((state:any) => state.cart);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getTotals());
   }, [cart, dispatch]);
 
-  const handleAddToCart = (product) => {
+  const handleAddToCart = (product:any) => {
     dispatch(addToCart(product));
   };
-  const handleDecreaseCart = (product) => {
+  const handleDecreaseCart = (product:any) => {
     dispatch(decreaseCart(product));
   };
-  const handleRemoveFromCart = (product) => {
+  const handleRemoveFromCart = (product:any) => {
     dispatch(removeFromCart(product));
   };
   const handleClearCart = () => {
@@ -49,28 +49,23 @@ const Cart = () => {
           </div>
         </div>
       ) : (
-        <div>
-          <div className="titles">
-            <h3 className="product-title">Product</h3>
-            <h3 className="price">Price</h3>
-            <h3 className="quantity">Quantity</h3>
-            <h3 className="total">Total</h3>
-          </div>
+        <div className="cart-items-container">
+            
           <div className="cart-items">
             {cart.cartItems &&
               cart.cartItems.map((cartItem:any) => (
                 <div  className="cart-item" key={cartItem._id}>
                   <div className="cart-product">
                     <img src={cartItem.image} alt={cartItem.name} />
-                    <div>
+                    <div className="cart-product-info">
                       <h3>{cartItem.name}</h3>
                       <p>{cartItem.desc}</p>
-                      <button onClick={() => handleRemoveFromCart(cartItem)}>
+                      <button className="button__red"  onClick={() => handleRemoveFromCart(cartItem)}>
                         Remove
                       </button>
+                        <div className="cart-product-price">${cartItem.price.toLocaleString()}</div>
                     </div>
                   </div>
-                  <div className="cart-product-price">${cartItem.price}</div>
                   <div className="cart-product-quantity">
                     <button onClick={() => handleDecreaseCart(cartItem)}>
                       -
@@ -85,16 +80,16 @@ const Cart = () => {
               ))}
           </div>
           <div className="cart-summary">
-            <button className="clear-btn" onClick={() => handleClearCart()}>
+            <button  className="clear-btn button__red" onClick={() => handleClearCart()}>
               Clear Cart
             </button>
             <div className="cart-checkout">
               <div className="subtotal">
                 <span>Subtotal</span>
-                <span className="amount">${cart.cartTotalAmount}</span>
+                <span className="amount">${cart.cartTotalAmount.toLocaleString()}</span>
               </div>
               <p>Taxes and shipping calculated at checkout</p>
-              <button>Check out</button>
+              <button className="button__blue">Check out</button>
               <div className="continue-shopping">
                 <Link to="/">
                   <svg
