@@ -1,43 +1,49 @@
 import { useRef, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "../../../contexts/auth";
+import { useForm } from "react-hook-form";
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from "yup";
+
+interface IFormInputs {
+  email: string
+  password: number
+}
+
+const schema = yup.object({
+  email: yup.string().required(),
+  password: yup.string().required(),
+}).required();
+
 
 const Login = () => {
-  const emailRef = useRef<any>();
-  const passwordRef = useRef<any>();
+  // const { signIn }: any = useAuth();
+  //   const { error } = await signIn({ email, password });
 
-  const [error, setError] = useState(null);
+  const { register, handleSubmit, formState:{ errors } } = useForm<IFormInputs>({
+    resolver: yupResolver(schema)
+  });
+  const onSubmit = (data: IFormInputs) => console.log(data);
 
-  const { signIn }: any = useAuth();
-  const history = useHistory();
-
-  async function handleSubmit(e: React.SyntheticEvent) {
-    e.preventDefault();
-
-    const email = emailRef.current.value;
-    const password = passwordRef.current.value;
-
-    const { error } = await signIn({ email, password });
-
-    if (error) return setError(error);
-
-    history.push("/");
-  }
   return (
-    <div className="form">
+           <div className="form">
     <div className="form__auth">
-      <form onSubmit={handleSubmit}>
-        <input id="input-email" type="email" placeholder="Write your Email" ref={emailRef} />
-        <input id="input-password" type="password" placeholder="Write your Password" ref={passwordRef} />
-        <br />
-        <button type="submit" className="button__blue">Login</button>
-      </form>
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <input {...register("email")} placeholder="Write your Email"/>
+      <p>{errors.email?.message}</p>
+        
+      <input type="password" {...register("password")} placeholder="Write your Password"/>
+      <p>{errors.password?.message}</p>
+      
+      <input className="button__blue" type="submit" />
+    </form>
       <p>
-        Don't have an account? <Link to="/register">Sign Up</Link>
+       Don't have an account? <Link to="/register">Sign Up</Link>
       </p>
-    </div>
+      </div>
     </div>
   );
 };
+
 
 export default Login;

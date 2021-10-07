@@ -1,42 +1,50 @@
 import { useRef, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "../../../contexts/auth";
+import { useForm } from "react-hook-form";
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from "yup";
+
+interface IFormInputs {
+  email: string
+  password: number
+}
+
+const schema = yup.object({
+  email: yup.string().required(),
+  password: yup.string().required(),
+}).required();
 
 const Register = () => {
-  const emailRef = useRef<any>();
-  const passwordRef = useRef<any>();
-  const [error, setError] = useState(null);
-
   const { signUp }:any = useAuth();
-  const history = useHistory();
+  // const history = useHistory();
+  // const { error } = await signUp({ email, password });
 
-  async function handleSubmit(e: React.SyntheticEvent) {
-    e.preventDefault();
+    
+   const { register, handleSubmit, formState:{ errors } } = useForm<IFormInputs>({
+    resolver: yupResolver(schema)
+  });
+  const onSubmit = (data: IFormInputs) => console.log(data);
 
-    const email = emailRef.current.value;
-    const password = passwordRef.current.value;
-
-    const { error } = await signUp({ email, password });
-
-    if (error) return setError(error);
-
-    history.push("/");
-  }
   return (
-        <div className="form">
+           <div className="form">
     <div className="form__auth">
-      <form onSubmit={handleSubmit}>
-        <input id="input-email" type="email" placeholder="Write your Email" ref={emailRef} />
-        <input id="input-password" type="password" placeholder="Write your Password" ref={passwordRef} />
-        <br />
-        <button type="submit" className="button__blue">Sign up</button>
-      </form>
-      <p>
-        Already have an account? <Link to="/login">Log In</Link>
-      </p>
-    </div>
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <input {...register("email")} placeholder="Write your Email"/>
+      <p>{errors.email?.message}</p>
+        
+      <input type="password" {...register("password")} placeholder="Write your Password"/>
+      <p>{errors.password?.message}</p>
+      
+      <input className="button__blue" type="submit" />
+    </form>
+     <p>
+    Already have an account? <Link to="/login">Log In</Link>
+     </p>
+      </div>
     </div>
   );
 };
+
 
 export default Register;
