@@ -2,6 +2,16 @@ import { createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
 
 
+export interface Item {
+  _id: string
+  name: string
+  description: string
+  price: number
+  image: string
+  cartQuantity: number
+  created_at: string
+}
+
 const initialState = {
   cartItems: localStorage.getItem("cartItems")
     ? JSON.parse(localStorage.getItem("cartItems"))
@@ -16,7 +26,7 @@ const cartSlice = createSlice({
   reducers: {
     addToCart(state, action) {
       const existingIndex = state.cartItems.findIndex(
-        (item:any) => item._id === action.payload._id,
+        (item:Item) => item._id === action.payload._id,
       );
 
       if (existingIndex >= 0) {
@@ -38,7 +48,7 @@ const cartSlice = createSlice({
     },
     decreaseCart(state, action) {
       const itemIndex = state.cartItems.findIndex(
-        (item:any) => item._id === action.payload._id
+        (item:Item) => item._id === action.payload._id
       );
 
       if (state.cartItems[itemIndex].cartQuantity > 1) {
@@ -49,7 +59,7 @@ const cartSlice = createSlice({
         });
       } else if (state.cartItems[itemIndex].cartQuantity === 1) {
         const nextCartItems = state.cartItems.filter(
-          (item:any) => item._id !== action.payload._id
+          (item:Item) => item._id !== action.payload._id
         );
 
         state.cartItems = nextCartItems;
@@ -62,10 +72,10 @@ const cartSlice = createSlice({
       localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
     },
     removeFromCart(state, action) {
-      state.cartItems.map((cartItem:any) => {
+      state.cartItems.map((cartItem:Item) => {
         if (cartItem._id === action.payload._id) {
           const nextCartItems = state.cartItems.filter(
-            (item:any) => item._id !== cartItem._id
+            (item:Item) => item._id !== cartItem._id
           );
 
           state.cartItems = nextCartItems;
@@ -78,9 +88,9 @@ const cartSlice = createSlice({
         return state;
       });
     },
-    getTotals(state, action) {
+    getTotals(state) {
       let { total, quantity } = state.cartItems.reduce(
-        (cartTotal:any, cartItem:any) => {
+        (cartTotal:any, cartItem:Item) => {
           const { price, cartQuantity } = cartItem;
           const itemTotal = price * cartQuantity;
 
@@ -98,7 +108,7 @@ const cartSlice = createSlice({
       state.cartTotalQuantity = quantity;
       state.cartTotalAmount = total;
     },
-    clearCart(state, action) {
+    clearCart(state) {
       state.cartItems = [];
       localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
       toast.error("Cart cleared", { position: "bottom-left" });

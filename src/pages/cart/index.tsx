@@ -1,23 +1,25 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { addToCart, clearCart, decreaseCart, getTotals, removeFromCart } from "../../features/cartSlice";
+import { addToCart, clearCart, decreaseCart, getTotals, Item, removeFromCart } from "../../features/cartSlice";
+import { RootState } from "../../store";
+import { ProductItem } from "../../types";
 
 const Cart = () => {
-     const cart = useSelector((state:any) => state.cart);
+     const cart = useSelector((state: RootState) => state.cart);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getTotals());
   }, [cart, dispatch]);
 
-  const handleAddToCart = (product:any) => {
+  const handleAddToCart = (product:ProductItem) => {
     dispatch(addToCart(product));
   };
-  const handleDecreaseCart = (product:any) => {
+  const handleDecreaseCart = (product:ProductItem) => {
     dispatch(decreaseCart(product));
   };
-  const handleRemoveFromCart = (product:any) => {
+  const handleRemoveFromCart = (product:ProductItem) => {
     dispatch(removeFromCart(product));
   };
   const handleClearCart = () => {
@@ -53,13 +55,12 @@ const Cart = () => {
             
           <div className="cart-items">
             {cart.cartItems &&
-              cart.cartItems.map((cartItem:any) => (
+              cart.cartItems.map((cartItem:Item) => (
                 <div  className="cart-item" key={cartItem._id}>
                   <div className="cart-product">
                     <img src={cartItem.image} alt={cartItem.name} />
                     <div className="cart-product-info">
                       <h3>{cartItem.name}</h3>
-                      <p>{cartItem.desc}</p>
                       <button className="button__red"  onClick={() => handleRemoveFromCart(cartItem)}>
                         Remove
                       </button>
