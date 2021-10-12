@@ -1,0 +1,16 @@
+.success {
+    margin: 15px;
+    z-index: 999;
+    background-color: rgb(28 142 28);
+    color: white;
+    padding: 10px 30px;
+    border-radius: 8px;
+}
+.error{
+    margin: 15px;
+    z-index: 999;
+    background-color: red;
+    color: white;
+    padding: 10px 30px;
+    border-radius: 8px;
+}
