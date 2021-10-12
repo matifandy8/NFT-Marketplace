@@ -1,32 +1,32 @@
-.form{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  .form__auth{
-   height: 100%;
+.form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .form__auth {
+    height: 100%;
     width: 25rem;
     margin: 40px;
     border-radius: 10px;
-    box-shadow: 0 2.8px 2.2px rgb(0 0 0 / 3%), 0 6.7px 5.3px rgb(0 0 0 / 5%), 0 12.5px 10px rgb(0 0 0 / 6%), 0 22.3px 17.9px rgb(0 0 0 / 7%), 0 41.8px 33.4px rgb(0 0 0 / 9%), 0 100px 80px rgb(0 0 0 / 12%);
+    box-shadow: 0 2.8px 2.2px rgb(0 0 0 / 3%), 0 6.7px 5.3px rgb(0 0 0 / 5%),
+      0 12.5px 10px rgb(0 0 0 / 6%), 0 22.3px 17.9px rgb(0 0 0 / 7%),
+      0 41.8px 33.4px rgb(0 0 0 / 9%), 0 100px 80px rgb(0 0 0 / 12%);
     display: flex;
     align-self: center;
     justify-content: center;
     flex-direction: column;
-    form{
-         margin-top: 20px;
-        padding: 30px 60px;
+    form {
+      margin-top: 20px;
+      padding: 30px 60px;
     }
     form input {
-    flex: 1 1;
-    padding: 13px;
-    border: 1px solid #d6d8e6;
-    border-radius: 4px;
-    font-size: 16px;
-    transition: all .2s ease-out;
-    margin-bottom: 25px;
-    border-radius: 8px;
+      flex: 1 1;
+      padding: 13px;
+      border: 1px solid #d6d8e6;
+      border-radius: 4px;
+      font-size: 16px;
+      transition: all 0.2s ease-out;
+      margin-bottom: 25px;
+      border-radius: 8px;
+    }
+  }
 }
-}  
-
-}
-

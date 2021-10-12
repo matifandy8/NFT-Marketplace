@@ -1,32 +1,39 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { addToCart, clearCart, decreaseCart, getTotals, Item, removeFromCart } from "../../features/cartSlice";
+import {
+  addToCart,
+  clearCart,
+  decreaseCart,
+  getTotals,
+  Item,
+  removeFromCart,
+} from "../../features/cartSlice";
 import { RootState } from "../../store";
 import { ProductItem } from "../../types";
 
 const Cart = () => {
-     const cart = useSelector((state: RootState) => state.cart);
+  const cart = useSelector((state: RootState) => state.cart);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getTotals());
   }, [cart, dispatch]);
 
-  const handleAddToCart = (product:ProductItem) => {
+  const handleAddToCart = (product: ProductItem) => {
     dispatch(addToCart(product));
   };
-  const handleDecreaseCart = (product:ProductItem) => {
+  const handleDecreaseCart = (product: ProductItem) => {
     dispatch(decreaseCart(product));
   };
-  const handleRemoveFromCart = (product:ProductItem) => {
+  const handleRemoveFromCart = (product: ProductItem) => {
     dispatch(removeFromCart(product));
   };
   const handleClearCart = () => {
     dispatch(clearCart());
   };
-    return (
-         <div className="cart-container">
+  return (
+    <div className="cart-container">
       <h2>Shopping Cart</h2>
       {cart.cartItems.length === 0 ? (
         <div className="cart-empty">
@@ -52,19 +59,23 @@ const Cart = () => {
         </div>
       ) : (
         <div className="cart-items-container">
-            
           <div className="cart-items">
             {cart.cartItems &&
-              cart.cartItems.map((cartItem:Item) => (
-                <div  className="cart-item" key={cartItem._id}>
+              cart.cartItems.map((cartItem: Item) => (
+                <div className="cart-item" key={cartItem._id}>
                   <div className="cart-product">
                     <img src={cartItem.image} alt={cartItem.name} />
                     <div className="cart-product-info">
                       <h3>{cartItem.name}</h3>
-                      <button className="button__red"  onClick={() => handleRemoveFromCart(cartItem)}>
+                      <button
+                        className="button__red"
+                        onClick={() => handleRemoveFromCart(cartItem)}
+                      >
                         Remove
                       </button>
-                        <div className="cart-product-price">${cartItem.price.toLocaleString()}</div>
+                      <div className="cart-product-price">
+                        ${cartItem.price.toLocaleString()}
+                      </div>
                     </div>
                   </div>
                   <div className="cart-product-quantity">
@@ -81,13 +92,18 @@ const Cart = () => {
               ))}
           </div>
           <div className="cart-summary">
-            <button  className="clear-btn button__red" onClick={() => handleClearCart()}>
+            <button
+              className="clear-btn button__red"
+              onClick={() => handleClearCart()}
+            >
               Clear Cart
             </button>
             <div className="cart-checkout">
               <div className="subtotal">
                 <span>Subtotal</span>
-                <span className="amount">${cart.cartTotalAmount.toLocaleString()}</span>
+                <span className="amount">
+                  ${cart.cartTotalAmount.toLocaleString()}
+                </span>
               </div>
               <p>Taxes and shipping calculated at checkout</p>
               <button className="button__blue">Check out</button>
@@ -114,7 +130,7 @@ const Cart = () => {
         </div>
       )}
     </div>
-    )
-}
+  );
+};
 
-export default Cart
+export default Cart;

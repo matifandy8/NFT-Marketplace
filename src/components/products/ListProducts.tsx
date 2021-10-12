@@ -5,21 +5,20 @@ import { ProductItem } from "../../types";
 import Loading from "../loading";
 import CardProduct from "./CardProduct";
 
-
 const ListProducts = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const dispatch = useDispatch()
-  const { products, loading, errors } = useSelector(productsSelector)
+  const dispatch = useDispatch();
+  const { products, loading, errors } = useSelector(productsSelector);
 
-  console.log(products, loading, errors)
+  console.log(products, loading, errors);
 
   useEffect(() => {
-    dispatch(getProducts())
-  }, [dispatch])
+    dispatch(getProducts());
+  }, [dispatch]);
 
   return (
     <div className="ListProducts">
-    <input
+      <input
         className="input"
         type="text"
         placeholder="Search..."
@@ -28,15 +27,15 @@ const ListProducts = () => {
         }}
       />
       <div className="products">
-        
         {loading ? (
-             <div className="loading">
-        <Loading/>
-        </div>
+          <div className="loading">
+            <Loading />
+          </div>
         ) : errors ? (
           <h2>Error</h2>
         ) : (
-          products.filter((product:ProductItem) => {
+          products
+            .filter((product: ProductItem) => {
               if (searchTerm === "") {
                 return product;
               } else if (
@@ -45,18 +44,18 @@ const ListProducts = () => {
                 return product;
               }
             })
-            .map((product:ProductItem) => (
+            .map((product: ProductItem) => (
               <CardProduct
                 key={product._id}
                 name={product.name}
                 price={product.price}
                 image={product.image}
-                _id={product._id} 
-                description={""}  
-                  />
+                _id={product._id}
+                description={""}
+              />
             ))
         )}
-    </div>
+      </div>
     </div>
   );
 };

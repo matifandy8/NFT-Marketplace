@@ -25,7 +25,6 @@ const Login = () => {
   const [errorStatus, setErrorStatus] = useState(false);
   const [errorText, setErrorText] = useState("");
 
-
   const {
     register,
     handleSubmit,
@@ -37,33 +36,31 @@ const Login = () => {
     console.log(data);
     const { error } = await signIn(data);
     if (!error) {
-      setErrorStatus(false)
+      setErrorStatus(false);
       setSuccessStatus(true);
       setTimeout(() => {
-      history.push("/");
-     }, 1000);
-
+        history.push("/");
+      }, 1000);
     }
     console.log(error.message);
-    setErrorText(error.message)
+    setErrorText(error.message);
     setSuccessStatus(false);
-    setErrorStatus(true)
+    setErrorStatus(true);
   };
 
   return (
     <div className="form">
-    
       <div className="form__auth">
-          {successStatus === true && (
-        <div className="alerts">
-          <AlertSuccess text="Login successfully!" />
-        </div>
-      )}
-       {errorStatus && (
-        <div className="alerts">
-          <AlertError text={errorText} />
-        </div>
-      )}
+        {successStatus === true && (
+          <div className="alerts">
+            <AlertSuccess text="Login successfully!" />
+          </div>
+        )}
+        {errorStatus && (
+          <div className="alerts">
+            <AlertError text={errorText} />
+          </div>
+        )}
         <form onSubmit={handleSubmit(onSubmit)}>
           <input {...register("email")} placeholder="Write your Email" />
           <p>{errors.email?.message}</p>
